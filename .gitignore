@@ -1,0 +1,17 @@
+proof.json
+.DS_Store
+methods/guest/Cargo.lock
+target/
+*.ipynb_checkpoints
+*benchmarks.json
+processed_inputs
+rpgf_ballots.csv
+Scarb.lock
+node_modules
+op_rpgf.pb
+/dist
+/target
+/pkg
+/wasm-pack.log
+votes_table.csv
+votes_table.json
