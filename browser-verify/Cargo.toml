@@ -1,0 +1,38 @@
+[package]
+name = "browser-verify"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "browser_verify"
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+risc0-zkvm = { version = "0.21.0", default-features = false }
+rpgf-ballots-methods = { path = "../rpgf-ballots-methods" }
+bincode = "1.3"
+halo2curves = { version = "0.6.0", features = ["derive_serde"] }
+serde_json = "1.0"
+serde-json-core = "0.5.1"
+log = { version = "0.4.17", default_features = false, optional = true }
+hex = "0.4.3"
+bytemuck = "1.7.0"
+serde = { version = "1.0", features = ["derive"] }
+arrayref = "0.3.6"                                                      # Check https://crates.io/crates/arrayref for the latest version
+wasm-bindgen-futures = "0.4.42"
+js-sys = "0.3.69"
+
+[target.'cfg(all(target_arch = "wasm32", target_os = "unknown"))'.dependencies]
+wasm-bindgen = { wasm-bindgen = "0.2.91", features = ["serde-serialize"] }
+console_error_panic_hook = "0.1.7"
+wasm-bindgen-console-logger = "0.1.1"
+serde-wasm-bindgen = "0.4"
+
+# These crates are used for running unit tests.
+[dev-dependencies]
+bincode = "1.3"
+wasm-bindgen-test = "0.3"
+
+[profile.dev]
+opt-level = 1
+incremental = true
